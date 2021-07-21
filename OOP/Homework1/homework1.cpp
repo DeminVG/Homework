@@ -9,10 +9,11 @@ using namespace std;
 
 class Power
 {
-    public:
+    private:
     double a;
     double b;
 
+    public:
     void set(){
         a = 2.1;
         b = 3.15;
@@ -62,7 +63,7 @@ class Stack
     Stack (int length)  // Конструктор
     {
         assert (length > 0);
-        m_arrey = new int[length];
+        m_arrey = new int[STACK_LENGTH];
         m_length = length;
     }
 
