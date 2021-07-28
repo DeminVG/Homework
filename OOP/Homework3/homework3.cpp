@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -79,6 +80,57 @@ public:
     }
 };
 
+class Car {
+private:
+    string m_company;
+    string m_model;
+public:
+    Car(string company = "", string model = "") {
+        m_company = company;
+        m_model = model;
+        cout << "Конструктор класса Car: " << this << "\n";
+    }
+    virtual ~Car() {
+        cout << "Деструктор класса Car: " << this << "\n";
+    }
+};
+
+class PassengerCars : virtual public Car {
+public:
+    PassengerCars(string company, string name)
+        : Car(company, name)
+    {
+        cout << "Конструктор класса PassengerCar: " << this << "\n";
+    }
+    virtual ~PassengerCars() {
+        cout << "Деструктор класса PassengerCar: " << this << "\n";
+    }
+};
+
+class Bus : virtual public Car {
+public:
+    Bus(string company, string name)
+        : Car(company, name)
+    {
+        cout << "Конструктор класса Bus: " << this << "\n";
+    }
+    virtual ~Bus() {
+        cout << "Деструктор класса Bus: " << this << "\n";
+    }
+};
+
+class Minivan : public PassengerCars, public Bus{
+public:
+    Minivan(string company, string name)
+        : PassengerCars(company, name), Bus(company, name)
+    {
+        cout << "Конструктор класса Minivan: " << this << "\n";
+    }
+    virtual ~Minivan() {
+        cout << "Деструктор класса Minivan: " << this << "\n";
+    }
+};
+
 int main() {
     setlocale(LC_ALL, "ru");
 
@@ -104,6 +156,14 @@ int main() {
     Rhombus rhombus(4, 5);
     Figure* figure5 = &rhombus;
     cout << "Площадь ромба = " << figure5 -> area() << "\n";
+
+    // Lesson 2
+    cout << "\nLesson 2:\n";
+
+    Car car1("Nissan", "Almera");
+    PassengerCars passenger_car("Kia", "Rio");
+    Bus bus("Toyota", "Hiace");
+    Minivan("Hyndai","Starex");
 
     return 0;
 }
