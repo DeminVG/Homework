@@ -7,6 +7,8 @@ using namespace std;
 
 int main()
 {
+    setlocale(LC_ALL, "ru");
+
     // Lesson 2
     cout << "Lesson 2" << endl;
     
