@@ -8,8 +8,7 @@ using namespace std;
 
 int main()
 {
-    using namespace std;
-     // Lesson 1
+    // Lesson 1
     {
         cout << "Lesson 1:\n";
         ArrayInt arr;
@@ -20,12 +19,17 @@ int main()
         arr.push_back(4);
         arr.push_back(13);
         arr.PrintArr();
+        
+        arr.sort();
+        arr.PrintArr();
 
         arr.pop_back();
         arr.PrintArr();
 
         arr.pop_front();
         arr.PrintArr();
+
+        
     }
 
     // Lesson 2

@@ -97,4 +97,22 @@ public:
 		}
 		resize(m_length - 1);
 	}
+
+	void swap(int* a, int* b) {
+		int temp;
+		temp = *a;
+		*a = *b;
+		*b = temp;
+	}
+
+	void sort() {
+		for(int i =0; i < m_length - 1; i++) {
+			for(int j =0; j<m_length - 1 - i; j++) {
+				if(*(m_data + j) > *(m_data + j + 1)) {
+					swap(m_data + j, m_data + j + 1);
+				}
+			}
+		}
+
+	}
 };
