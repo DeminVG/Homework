@@ -2,7 +2,7 @@
 #include <vector>
 #include <iterator>
 #include <algorithm>
-#include </home/demin/Desktop/OOP/ArrayInt.h>
+#include "ArrayInt.h"
 
 using namespace std;
 
