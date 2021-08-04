@@ -1,5 +1,4 @@
-﻿
-#include <iostream>
+﻿#include <iostream>
 #include <memory>
 
 using namespace std;
@@ -27,6 +26,22 @@ public:
         out << "Date: " << date.m_day << ". " << date.m_month << ". " << date.m_year << "\n";
         return out;
     }
+
+    friend void ptrIsNull (Date *date, string str)
+    {
+        if(date == NULL )
+        {
+            cout << "Указатель " << str << " является нулевым!" << endl;
+        } else cout << *date;
+    }
+
+    friend Date* lateDate(Date *date1, Date *date2)
+    {
+        Date* res;
+       
+        date1->m_year * 365 + date1->m_month * 30 + date1->m_day > date2->m_year * 365 + date2->m_month * 30 + date2->m_day ? res = date1 : res = date2;
+        return res;
+    }
 };
 
 
@@ -48,14 +63,21 @@ int main()
         unique_ptr<Date> data;
         data = move(today);
         
-        if(data == NULL) {
-            cout << "Указатель data является нулевым." << endl;
-        } else cout << *data;
-        
-        if(today == NULL) {
-            cout << "Указатель today является нулевым." << endl;
-        } else cout << *today;
+        ptrIsNull(data.get(), "data");
+        ptrIsNull(today.get(), "today");
+       
         cout << endl;     
     }
+
+    // Lesson 2
+    {
+        cout << "Lesson 2:" << endl;
+
+        unique_ptr<Date> data1(new Date(17, 8, 2022));
+        unique_ptr<Date> data2(new Date(8, 8, 2021));
+        cout << *lateDate(data1.get(), data2.get()) << "является более поздней датой." << endl;
+    }
+    
+
     return 0;
 }
