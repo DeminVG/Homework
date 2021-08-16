@@ -98,7 +98,6 @@ int main() {
         catch (const exception& ex)
         {
             cerr << ex.what();
-            //Ex(ex);
         }
 
     }
