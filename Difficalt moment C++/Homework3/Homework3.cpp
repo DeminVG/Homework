@@ -71,18 +71,17 @@ public:
         }
         if (row == 1) {
             determ = M[0][0];
-            
+            return(determ);
         }
         if (row == 2) {
             determ = M[0][0] * M[1][1] - M[1][0] * M[0][1];
-            //return(determ);
+            return(determ);
         }
         if (row == 3) {
             determ = M[0][0] * M[1][1] * M[2][2] + M[2][0] * M[0][1] * M[1][2] + M[1][0] * M[2][1] * M[0][2] 
             - M[2][0] * M[1][1] * M[0][2] - M[0][0] * M[2][1] * M[1][2] - M[1][0] * M[0][1] * M[2][2];
-            //return(determ);
+            return(determ);
         }
-        return(determ);
     }
     
     ~MATRIX()
@@ -95,6 +94,37 @@ public:
 
         if (row > 0)
             delete[] M;
+    }
+};
+
+class TestIterator {
+private:
+    int* m_ptr;
+    int  m_current;
+    int m_capacity;
+
+public:
+    TestIterator(int capacity) {
+        m_current = 0;
+        m_capacity = capacity;
+        m_ptr = new int[m_capacity];
+    }
+
+    void AddNumber(int num) {
+        m_ptr[m_current] = num;
+        ++m_current;
+    }
+
+    int* begin() {
+        return &m_ptr[0];
+    }
+
+    int* end() {
+        return &m_ptr[m_current];
+    }
+
+    ~TestIterator() {
+        delete m_ptr;
     }
 };
 
@@ -137,5 +167,21 @@ int main() {
     Matrix3.Print_Matrix("3x3");
     cout << "Determinat = " << Matrix3.Determinant() << endl << endl;
         
+    //Lesson3
+    cout << "Lesson 3:" << endl;
+
+    TestIterator test(10);
+    test.AddNumber(4);
+    test.AddNumber(6);
+    test.AddNumber(11);
+    test.AddNumber(3);
+    test.AddNumber(9);
+    test.AddNumber(46);
+
+    for (auto i : test) {
+        cout << i << " ";
+    }
+    cout << endl;
+
 	return 0;
 }
